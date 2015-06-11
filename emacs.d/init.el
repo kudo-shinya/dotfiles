@@ -20,3 +20,9 @@
  '(link ((t (:foreground "cyan" :underline t))))
  '(minibuffer-prompt ((t (:foreground "green"))))
  '(tool-bar ((t (:foreground "magenta" :box (:line-width 1 :style released-button))))))
+
+(add-to-list 'custom-theme-load-path
+	     (file-name-as-directory "~/.emacs.d/elisp/themes/"))
+
+(load-theme 'hober t t)
+(enable-theme 'hober)
