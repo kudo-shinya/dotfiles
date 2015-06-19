@@ -80,3 +80,9 @@ export EDITOR="emacsclient -nw -a ''"
 #getopt prompt_subst
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+#tmux自動分割設定
+# tmuxが起動していない場合にalias設定を行う
+#if [ $SHLVL = 1 ]; then
+    # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
+#    alias tmux="tmux -2 attach || tmux -2 tmux.conf \; source-file ~/dotfiles/tmux.conf"
