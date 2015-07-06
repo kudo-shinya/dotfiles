@@ -6,6 +6,11 @@
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
 ;;
 ;; Auto Complete
 ;;
@@ -65,3 +70,23 @@
 (setq auto-save-file-name-transforms
   `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
 
+;; get el-get.el
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+;; load in ~/.emacs.d/inits
+(el-get-bundle tarao/with-eval-after-load-feature-el
+  (require 'init-loader)
+  (setq init-loader-show-log-after-init nil)
+  (init-loader-load "~/.emacs.d/inits")
+  (if (not (equal (init-loader-error-log) ""))
+      (init-loader-show-log))
+)
