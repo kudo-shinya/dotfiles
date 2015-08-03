@@ -68,11 +68,12 @@ alias la='ls -a'
 alias rmb="rm ./*~"
 alias grep="grep --color"
 alias rspec="rspec -cfs"
-
+ 
 #emacs
 alias em="emacsclient -nw -a ''"
 alias killemacs"emacsclient -e '(kill-emacs)'"
 export EDITOR="emacsclient -nw -a ''"
+
 
 # 補完候補もLS_COLORSに合わせて色づけ。
 #zsh-completion
@@ -80,6 +81,7 @@ export EDITOR="emacsclient -nw -a ''"
 #getopt prompt_subst
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
 
 #tmux自動分割設定
 # tmuxが起動していない場合にalias設定を行う

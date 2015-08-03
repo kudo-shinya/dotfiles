@@ -25,7 +25,7 @@
 ;;(setq ac-use-fuzzy t)          ;; 曖昧マッチ
 
 
- 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,7 +82,16 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+;;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;;(el-get 'sync)
+
+;; (el-get 'sync
+;;   'color-moccur
+;;   'magit
+;; )
+
 ;; load in ~/.emacs.d/inits
+
 (el-get-bundle tarao/with-eval-after-load-feature-el
   (require 'init-loader)
   (setq init-loader-show-log-after-init nil)
@@ -90,3 +99,6 @@
   (if (not (equal (init-loader-error-log) ""))
       (init-loader-show-log))
 )
+
+;;スペースを色付け
+(setq-default show-trailing-whitespace t)
