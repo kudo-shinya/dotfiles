@@ -65,9 +65,6 @@
 (setq auto-save-file-name-transforms
   `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
 
-
-
-
 ;; get el-get.el
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 (unless (require 'el-get nil 'noerror)
@@ -96,3 +93,6 @@
 
 ;;スペースを色付け
 (setq-default show-trailing-whitespace t)
+
+;;指定した行数に飛ぶ
+(global-set-key "\C-x\C-g" 'goto-line)
