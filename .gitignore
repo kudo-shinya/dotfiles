@@ -3,4 +3,4 @@ emacs.d/history
 emacs.d/elpa/*
 **.el~
 **.elc
-emacs.d/el-get
+emacs.d/el-get/*
