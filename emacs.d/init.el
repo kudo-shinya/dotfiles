@@ -24,8 +24,6 @@
 ;;(setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
 ;;(setq ac-use-fuzzy t)          ;; 曖昧マッチ
 
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,21 +57,18 @@
 ;; フレームの透明度
 (set-frame-parameter (selected-frame) 'alpha '(0.85))
 
-;;
 ;; backup の保存先
-;;
 (setq backup-directory-alist
   (cons (cons ".*" (expand-file-name "~/.emacs.d/backup/"))
         backup-directory-alist))
 
-
 (setq auto-save-file-name-transforms
   `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
 
-;; get el-get.el
-(when load-file-name
-  (setq user-emacs-directory (file-name-directory load-file-name)))
 
+
+
+;; get el-get.el
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -91,7 +86,6 @@
 ;; )
 
 ;; load in ~/.emacs.d/inits
-
 (el-get-bundle tarao/with-eval-after-load-feature-el
   (require 'init-loader)
   (setq init-loader-show-log-after-init nil)
