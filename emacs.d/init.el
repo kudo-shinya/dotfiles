@@ -1,6 +1,8 @@
 (electric-indent-mode -1)
 
+;;
 ;;add melpa
+;;
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -12,17 +14,14 @@
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
 ;;
-;; Auto Complete
+;;カラー設定
 ;;
-;;(require 'auto-complete-config)
-;;(ac-config-default)
-;;(add-to-list 'ac-modes 'text-mode)         ;; text-modeでも自動的に有効にする
-;;(add-to-list 'ac-modes 'fundamental-mode)  ;; fundamental-mode
-;;(add-to-list 'ac-modes 'org-mode)
-;;(add-to-list 'ac-modes 'yatex-mode)
-;;(ac-set-trigger-key "TAB")
-;;(setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
-;;(setq ac-use-fuzzy t)          ;; 曖昧マッチ
+;;applied hober color-theme
+;; (add-to-list 'custom-theme-load-path
+;; 	     (file-name-as-directory "~/dotfiles/emacs.d/elisp/themes/"))
+;; (load-theme 'hober t)
+;; (enable-theme 'hober)
+;;(load-theme 'wombat t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -47,25 +46,39 @@
  '(minibuffer-prompt ((t (:foreground "green"))))
  '(tool-bar ((t (:foreground "magenta" :box (:line-width 1 :style released-button))))))
 
-;;applied hober color-theme
-;; (add-to-list 'custom-theme-load-path
-;; 	     (file-name-as-directory "~/dotfiles/emacs.d/elisp/themes/"))
-;; (load-theme 'hober t)
-;; (enable-theme 'hober)
-;;(load-theme 'wombat t)
+;;
+;; Auto Complete
+;;
+(require 'auto-complete-config)
+(ac-config-default)
+(add-to-list 'ac-modes 'text-mode)         ;; text-modeでも自動的に有効にする
+(add-to-list 'ac-modes 'fundamental-mode)  ;; fundamental-mode
+(add-to-list 'ac-modes 'org-mode)
+(add-to-list 'ac-modes 'yatex-mode)
+(ac-set-trigger-key "TAB")
+(setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
+(setq ac-use-fuzzy t)          ;; 曖昧マッチ
 
-;; フレームの透明度
-(set-frame-parameter (selected-frame) 'alpha '(0.85))
+;;
+;;透過の設定
+;;
+;; (when window-system
+;;   (progn
+;;     (setq default-frame-alist
+;;       (append
+;;        (list
+;;         '(vertical-scroll-bars . nil) ;;スクロールバーはいらない
+;;         '(alpha  . 85))
+;;        default-frame-alist))))
 
-;; backup の保存先
-(setq backup-directory-alist
-  (cons (cons ".*" (expand-file-name "~/.emacs.d/backup/"))
-        backup-directory-alist))
+;;(set-frame-parameter (selected-frame) 'alpha '(0.85))
+;;(set-frame-parameter nil 'alpha 85)
+;;(add-to-list 'default-frame-alist' (alpha . 85))
 
-(setq auto-save-file-name-transforms
-  `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
-
-;; get el-get.el
+;;
+;; el-get.el
+;;
+;;get el-get.el
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -90,6 +103,18 @@
   (if (not (equal (init-loader-error-log) ""))
       (init-loader-show-log))
 )
+
+;;起動時にウィンドウを最大化する
+;;(set-frame-parameter nil 'fullscreen 'maximized)
+
+;;backup の保存先
+(setq backup-directory-alist
+  (cons (cons ".*" (expand-file-name "~/.emacs.d/backup/"))
+        backup-directory-alist))
+
+;;auto-save-fileの保存先
+(setq auto-save-file-name-transforms
+  `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
 
 ;;スペースを色付け
 (setq-default show-trailing-whitespace t)
