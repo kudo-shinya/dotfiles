@@ -102,3 +102,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #if [ $SHLVL = 1 ]; then
     # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
 #    alias tmux="tmux -2 attach || tmux -2 tmux.conf \; source-file ~/dotfiles/tmux.conf"
+
+#ctrl-sを押した時にキー入力を受け付けなくなるlinux仕様を無効にする
+stty stop undef
