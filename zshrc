@@ -64,7 +64,6 @@ alias ....='cd ../../..'
 alias rm='rm -i'
 alias ls='ls -al'
 alias rmb="rm ./*~"
-alias grep="grep --color"
 alias rspec="rspec -cfs"
 
 alias e="emacs"
@@ -72,16 +71,14 @@ alias e.="emacs ."
 
 alias g="git"
 alias gs="git status"
-alias gch="git checkout"
 alias gb="git branch"
 alias gl="git log --name-status"
-alias gsth="git stash"
 alias gdf="git diff"
-alias gfch="git fetch"
-alias gp="git pull"
-alias gpom="git pull origin master"
-alias gcm="git commit -m"
-alias ga='git add'
+alias gch="git checkout"
+alias gsh="git stash"
+alias grp="find ./ | xargs grep"
+alias grpf="find ./ -type f -name"
+alias grpd="find ./ -type d -name"
 
 #emacs
 alias em="emacsclient -nw -a ''"
