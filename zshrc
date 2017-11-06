@@ -64,7 +64,8 @@ alias ....='cd ../../..'
 alias rm='rm -i'
 alias ls='ls -al'
 alias rmb="rm ./*~"
-alias rspec="rspec -cfs"
+alias grep="grep --color"
+alias rspec="rspec -c"
 
 alias e="emacs"
 alias e.="emacs ."

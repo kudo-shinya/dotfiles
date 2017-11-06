@@ -28,7 +28,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -221,6 +221,12 @@
 (global-set-key (kbd "M-p") (lambda () (interactive) (scroll-down 1)))
 
 (delete-selection-mode t)
+
+;;分割したウインドウ移動
+(global-set-key (kbd "C-x n")  'windmove-down)
+(global-set-key (kbd "C-x p")  'windmove-up)
+(global-set-key (kbd "C-x f")  'windmove-right)
+(global-set-key (kbd "C-x b")  'windmove-left)
 
 ;; neotree
 (require 'neotree)
