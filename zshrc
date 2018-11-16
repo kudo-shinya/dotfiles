@@ -62,7 +62,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias rm='rm -i'
-alias ls='ls -al'
+alias ls='ls -al --color=auto'
 alias rmb="rm ./*~"
 alias grep="grep --color"
 alias rspec="rspec -c"
@@ -80,6 +80,11 @@ alias gsh="git stash"
 alias grp="find ./ | xargs grep"
 alias grpf="find ./ -type f -name"
 alias grpd="find ./ -type d -name"
+
+alias f="find ./ -type f | xargs grep"
+alias fnospec="find ./ -type f -not -name '*spec.rb' | xargs grep"
+alias ff="find ./ -type f -name"
+alias fd="find ./ -type d -name"
 
 #emacs
 alias em="emacsclient -nw -a ''"
@@ -103,3 +108,5 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 #ctrl-sを押した時にキー入力を受け付けなくなるlinux仕様を無効にする
 stty stop undef
+
+PS1="%{$fg[cyan]%}[${USER}@${HOST%%.*} %1~]%(!.#.$)${reset_color} "
